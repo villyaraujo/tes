@@ -132,21 +132,21 @@ if(!empty($_POST) && isset($_POST['charge_single_driver'])){
                 $transaction_id = crypto_string();
                 
                 $transaction_query = sprintf('INSERT INTO %stbl_wallet_transactions 
-                (transaction_id, amount, cur_symbol, cur_exchng_rate, cur_code, wallet_balance, user_id, user_type, `desc`, `type`, transaction_date) 
-                VALUES ("%s", "%f", "%s", "%s", "%s", "%f", "%d", "%d", "%s", "%d", "%s")',
-                DB_TBL_PREFIX,
-                $transaction_id,
-                $monthly_fee_amount,
-                $currency_symbol,
-                $exchange_rate,
-                $currency_code,
-                $new_balance,
-                $driver_id,
-                1, 
-                $transaction_description,
-                3, 
-                gmdate('Y-m-d H:i:s', time())
-                );
+                    (transaction_id, amount, cur_symbol, cur_exchng_rate, cur_code, wallet_balance, user_id, user_type, `desc`, `type`, transaction_date) 
+                    VALUES ("%s", %f, "%s", %f, "%s", %f, %d, %d, "%s", %d, "%s")',
+                    DB_TBL_PREFIX,
+                    $transaction_id,
+                    $monthly_fee_amount,
+                    $currency_symbol,
+                    $exchange_rate,
+                    $currency_code,
+                    $new_balance,
+                    $driver_id,
+                    1, 
+                    $transaction_description,
+                    3, 
+                    gmdate('Y-m-d H:i:s', time())
+                    );
                 
                 if(mysqli_query($GLOBALS['DB'], $transaction_query)){
                   
@@ -341,21 +341,21 @@ if(!empty($_POST) && isset($_POST['apply_fee'])){
                 $transaction_id = crypto_string();
                 
                 $transaction_query = sprintf('INSERT INTO %stbl_wallet_transactions 
-                (transaction_id, amount, cur_symbol, cur_exchng_rate, cur_code, wallet_balance, user_id, user_type, `desc`, `type`, transaction_date) 
-                VALUES ("%s", "%f", "%s", "%s", "%s", "%f", "%d", "%d", "%s", "%d", "%s")',
-                DB_TBL_PREFIX,
-                $transaction_id,
-                $monthly_fee_amount,
-                $currency_symbol,
-                $exchange_rate,
-                $currency_code,
-                $new_balance,
-                $driver_id,
-                1, 
-                $transaction_description,
-                3, 
-                gmdate('Y-m-d H:i:s', time())
-                );
+                    (transaction_id, amount, cur_symbol, cur_exchng_rate, cur_code, wallet_balance, user_id, user_type, `desc`, `type`, transaction_date) 
+                    VALUES ("%s", %f, "%s", %f, "%s", %f, %d, %d, "%s", %d, "%s")',
+                    DB_TBL_PREFIX,
+                    $transaction_id,
+                    $monthly_fee_amount,
+                    $currency_symbol,
+                    $exchange_rate,
+                    $currency_code,
+                    $new_balance,
+                    $driver_id,
+                    1, 
+                    $transaction_description,
+                    3, 
+                    gmdate('Y-m-d H:i:s', time())
+                    );
                 
                 if(mysqli_query($GLOBALS['DB'], $transaction_query)){
                     $update_last_fee_date = sprintf('UPDATE %stbl_drivers SET last_monthly_fee_date = "%s" WHERE driver_id = %d', 
