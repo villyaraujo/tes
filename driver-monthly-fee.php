@@ -230,7 +230,7 @@ if(!empty($_POST) && isset($_POST['run_monthly_fee'])){
                 
                 $transaction_query = sprintf('INSERT INTO %stbl_wallet_transactions 
                 (transaction_id, amount, cur_symbol, cur_exchng_rate, cur_code, wallet_balance, user_id, user_type, `desc`, `type`, transaction_date) 
-                VALUES ("%s", "%f", "%s", "%s", "%s", "%f", "%d", "%d", "%s", "%d", "%s")',
+                VALUES ("%s", %f, "%s", %f, "%s", %f, %d, %d, "%s", %d, "%s")',
                 DB_TBL_PREFIX,
                 $transaction_id,
                 $monthly_fee_amount,
